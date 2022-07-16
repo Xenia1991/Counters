@@ -24,21 +24,21 @@ const CountersList = ()=> {
     }
 
     const handleIncrement = (id) => {
-        const newValue = counters.filter((c) => {
-            if (c.id === id) {
+        const newValue = counters.map((c) => {
+            if (c.id === id ) {
                 c.value += 1
-            } 
-            return true
+             } 
+            return c
         })
         setCounters(newValue)
     }
 
     const handleDecrement = (id) => {
-        const newValue = counters.filter((c) => {
+        const newValue = counters.map((c) => {
             if (c.id === id && c.value !== 0) {
                 c.value -= 1
-            } 
-            return true
+             } 
+            return c
         })
         setCounters(newValue)
     }
@@ -47,7 +47,6 @@ const CountersList = ()=> {
             {counters.map ((count) => (
                 <Counter 
                 key={count.id}
-                value={count.value}
                 onDelete={handleDelete} 
                 onIncrement = {handleIncrement}
                 onDecrement = {handleDecrement}
@@ -60,4 +59,3 @@ const CountersList = ()=> {
 };
 
 export default CountersList;
-// (c.id === id && c.value !==0) ? c.value -= 1 : (c.id === id &&c.value===1) ? c.value -=1 : c.id !== id ? true  : true
